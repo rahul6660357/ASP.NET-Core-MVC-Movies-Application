@@ -24,7 +24,8 @@ using (var context = new DemoMVC_ASPCOREContext (serviceProvider.GetRequiredServ
                         title = "When Harry Met Sally",
                         releasedate = DateTime.Parse("1989-2-12"),
                         genric = "Romantic Comedy",
-                        price = 7.99M
+                        price = 7.99M, 
+                        rating="C"
                     },
 
                     new Movie
@@ -32,7 +33,8 @@ using (var context = new DemoMVC_ASPCOREContext (serviceProvider.GetRequiredServ
                         title = "Ghostbusters ",
                         releasedate = DateTime.Parse("1984-3-13"),
                         genric = "Comedy",
-                        price = 8.99M
+                        price = 8.99M,
+                        rating = "B"
                     },
 
                     new Movie
@@ -40,7 +42,8 @@ using (var context = new DemoMVC_ASPCOREContext (serviceProvider.GetRequiredServ
                         title = "Ghostbusters 2",
                         releasedate = DateTime.Parse("1986-2-23"),
                         genric = "Comedy",
-                        price = 9.99M
+                        price = 9.99M,
+                        rating = "A"
                     },
 
                     new Movie
@@ -48,7 +51,8 @@ using (var context = new DemoMVC_ASPCOREContext (serviceProvider.GetRequiredServ
                         title = "Rio Bravo",
                         releasedate = DateTime.Parse("1959-4-15"),
                         genric = "Western",
-                        price = 3.99M
+                        price = 3.99M,
+                        rating="R"
                     }
                     );
                 context.SaveChanges();

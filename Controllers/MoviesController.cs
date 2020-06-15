@@ -72,7 +72,7 @@ namespace DemoMVC_ASPCORE.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,title,releasedate,genric,price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("id,title,releasedate,genric,price, rating")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace DemoMVC_ASPCORE.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,title,releasedate,genric,price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("id,title,releasedate,genric,price, rating")] Movie movie)
         {
             if (id != movie.id)
             {

@@ -4,14 +4,16 @@ using DemoMVC_ASPCORE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DemoMVC_ASPCORE.Migrations
 {
     [DbContext(typeof(DemoMVC_ASPCOREContext))]
-    partial class DemoMVC_ASPCOREContextModelSnapshot : ModelSnapshot
+    [Migration("20200615095228_Rating")]
+    partial class Rating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
