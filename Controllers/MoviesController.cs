@@ -20,9 +20,27 @@ namespace DemoMVC_ASPCORE.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string moviegenric, string searchstring)
         {
-            return View(await _context.Movie.ToListAsync());
+            IQueryable<string> genrequery = from m in _context.Movie
+                                            orderby m.genric 
+                                            select m.genric;
+            var movies = from m in _context.Movie select m;
+            if (!String.IsNullOrEmpty(searchstring))
+            {
+                movies = movies.Where(s => s.title.Contains(searchstring));
+
+            }
+            if (!String.IsNullOrEmpty(moviegenric))
+            {
+                movies = movies.Where(x => x.genric == moviegenric);
+            }
+            var vm = new MoviegenreViewModel
+            {
+                genric = new SelectList(await genrequery.Distinct().ToListAsync()),
+            Movies = await movies.ToListAsync()
+        };
+            return View(vm);
         }
 
         // GET: Movies/Details/5
@@ -67,15 +85,18 @@ namespace DemoMVC_ASPCORE.Controllers
 
         // GET: Movies/Edit/5
 
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id, title, releasedate, genric, price")] Movie movie)
+        public async Task<IActionResult> Edit(int? id)
         {
-            if (id != movie.id)
+            if (id==null)
             {
                 return NotFound();
             }
-
+            var movie = await _context.Movie.FindAsync(id);
+            if(movie==null)
+            {
+                return NotFound();
+            }
+            return View(movie);
            
         }
 
